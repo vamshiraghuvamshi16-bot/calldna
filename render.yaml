@@ -1,0 +1,18 @@
+# Render blueprint for the backend (free tier; it sleeps when idle).
+# Render dashboard > New > Blueprint > pick this repo. Then set DATABASE_URL and CORS_ORIGINS.
+services:
+  - type: web
+    name: call-dna-api
+    runtime: python
+    plan: free
+    rootDir: backend
+    buildCommand: pip install -r requirements.txt
+    startCommand: uvicorn app.main:app --host 0.0.0.0 --port $PORT
+    healthCheckPath: /health
+    envVars:
+      - key: PYTHON_VERSION
+        value: 3.12.7
+      - key: DATABASE_URL
+        sync: false   # Supabase > Connect > Transaction pooler URI, with your password
+      - key: CORS_ORIGINS
+        sync: false   # your Vercel URL, e.g. https://call-dna.vercel.app

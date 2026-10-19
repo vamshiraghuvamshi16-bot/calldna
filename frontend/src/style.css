@@ -1,0 +1,41 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+html {
+  background: #edf0ee;
+  color: #16202a;
+  font-family: "Schibsted Grotesk", ui-sans-serif, system-ui, sans-serif;
+  -webkit-font-smoothing: antialiased;
+  text-rendering: optimizeLegibility;
+}
+body { margin: 0; min-height: 100vh; background: #edf0ee; }
+h1, h2, h3 {
+  font-family: "Bricolage Grotesque", ui-sans-serif, system-ui, sans-serif;
+  letter-spacing: -0.02em;
+  text-wrap: balance;
+}
+p { text-wrap: pretty; }
+.tabular { font-variant-numeric: tabular-nums; }
+:focus-visible { outline: 2px solid #5b3fd9; outline-offset: 2px; border-radius: 6px; }
+
+.rung-in {
+  transform-box: fill-box;
+  transform-origin: center;
+  animation: rung-in 420ms cubic-bezier(.2, .8, .2, 1) both;
+  animation-delay: calc(var(--i, 0) * 70ms);
+}
+@keyframes rung-in { from { transform: scaleY(0); opacity: 0; } }
+
+.band-drop {
+  animation: band-drop 700ms cubic-bezier(.2, .8, .2, 1) both;
+  animation-delay: calc(150ms + var(--i, 0) * 90ms);
+}
+@keyframes band-drop { from { bottom: 100%; opacity: 0; } }
+
+.settle { animation: settle 380ms ease-out both; }
+@keyframes settle { from { opacity: 0; transform: translateY(6px); } }
+
+@media (prefers-reduced-motion: reduce) {
+  .rung-in, .band-drop, .settle { animation: none; }
+}
