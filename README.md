@@ -79,3 +79,5 @@ The free Render service sleeps when idle; the first request after a pause can ta
 ## Privacy
 
 Phone numbers and emails typed into the prospect's words are replaced with `[phone]` / `[email]` before saving.
+
+deployed link https://calldna.vercel.app/
